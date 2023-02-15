@@ -1,0 +1,263 @@
+%! Author = jonas
+%! Date = 14.02.23
+
+% preamble
+\documentclass[12pt,a4paper]{article}
+
+% packages
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+
+% set document properties
+\setlength{\textwidth}{160mm}
+\setlength{\textheight}{260mm}
+\setlength{\evensidemargin}{27mm}
+\setlength{\oddsidemargin}{27mm}
+\setlength{\topmargin}{0mm}
+\setlength{\hoffset}{-1in}
+\setlength{\voffset}{-1in}
+\setlength{\headheight}{15pt}
+
+% define java-code properties
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+    language=Java,
+    basicstyle=\footnotesize,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=5pt,
+    backgroundcolor=\color{white},
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    frame=single,
+    rulecolor=\color{black},
+    tabsize=4,
+    captionpos=b,
+    breaklines=true,
+    breakatwhitespace=false,
+    title=\lstname,
+    keywordstyle=\color{blue},
+    commentstyle=\color{dkgreen},
+    stringstyle=\color{mauve},
+    inputencoding=utf8,
+    extendedchars=true,
+    literate=%
+        {Ä}{{\"A}}1
+        {Ö}{{\"O}}1
+        {Ü}{{\"U}}1
+        {ä}{{\"a}}1
+        {ö}{{\"o}}1
+        {ü}{{\"u}}1
+        {ß}{{\ss}}1
+        {⟸}{{$\Leftarrow$}}1
+}
+
+% define calculator project path
+\newcommand{\project}{/home/jonas/Dokumente/Java-Projekte/GraphingCalculator/src/main/java/de/jonas/graphingcalculator}
+
+% document
+\begin{document}
+    \setlength{\parindent}{0mm}
+    \setcounter{tocdepth}{4}
+    \pagestyle{plain}
+
+    \title{Grafikfähiger Taschenrechner \\[1ex] \large - Facharbeit Informatik -}
+    \date{}
+    \author{Jonas Lobe}
+
+    \maketitle
+    \newpage
+
+    \tableofcontents
+
+    \newpage
+
+    Der grafikfähige Taschenrechner wird in der Programmiersprache $Java$ entwickelt und bietet die normale Berchnung
+    von Termen ohne Variablen an, das Zeichnen von Funktionen und das Anlegen von Wertetabellen.
+    Für alle Eingaben mit Variable wird ausschließlich die Variable $x$ verwendet.
+    Um in einer Funktion eine Wurzel zu nutzen, wird die Standard-Abkürzung $sqrt$ genutzt.
+
+
+    \section{Funktionen des Taschenrechners}
+
+    \subsection{Berechnung von Termen} \label{subsection:calculator}
+    Der Taschenrechner ermöglicht das normale Berechnen von Termen ohne Variablen.
+    Dabei stehen dem Anwender verschiedene Rechenoperationenen zur Verfügung:
+
+    \begin{itemize}
+        \item Standard Rechenoperationen: Addition, Subtraktion, Division und Multiplikation
+        \item Trigonometrische Funktionen: Sinus, Cosinus und Tangens
+        \item Logarithmus und naürlicher Logarithmus
+        \item Wurzel ziehen
+        \item Potenzieren
+        \item Eulersche Konstante (e)
+        \item PI
+    \end{itemize}
+
+    \subsection{Zeichnen einer Funktion}
+    Bei der Eingabe der Funktionen stehen dem Nutzer dieselben mathematischen Operationen wie bei den Funktionen
+    des Taschenrechners $\ref{subsection:calculator}$ zur Verfügung.
+    Die Skalierung der Anzeige wird mit einem positiven Wert für die x-Achse und einem für die y-Achse angegeben.
+    Die Skalierung wird dann automatisch vorgenommen sowohl im negativen, als auch im positiven Bereich.
+    Wählt man also als x-Skalierung den Wert 10 und als y-Skalierung den Wert 15,
+    geht die Skalierung auf der x-Achse von -10 bis 10 und auf der y-Achse von -15 bis 15.
+    Für die Skalierung der Koordinaten-Achsen dürfen ausschließlich natürliche Zahlen verwendet werden.\par
+
+    \newpage
+
+    Wenn die Funktion gezeichnet wurde, stehen dem Anwender folgende Optionen unter fogenden Menüs zur Verfügung:
+
+        {
+        \renewcommand{\labelenumi}{\bf \Alph{enumi}}
+        \renewcommand{\labelenumii}{\arabic{enumii}}
+
+        \begin{enumerate}
+            \item Punkte
+            \begin{enumerate}
+                \item Nullstellen anzeigen
+                \item Extremstellen anzeigen
+                \item Wendepunkte anzeigen
+                \item Sattelpunkte anzeigen
+            \end{enumerate}
+
+            \item Markierungen
+            \begin{enumerate}
+                \item Punkt einzeichnen
+                \item Letzten Punkt entfernen
+            \end{enumerate}
+
+            \item Ableitung
+            \begin{enumerate}
+                \item erste Ableitung
+                \item zweite Ableitung
+                \item dritte Ableitung
+            \end{enumerate}
+            \item Extra
+            \begin{enumerate}
+                \item Tangente anlegen
+            \end{enumerate}
+        \end{enumerate}
+    }
+
+    Außerdem wird der Punkt an der Stelle der Maus angezeigt, solange die Maus gedrückt gehalten wird.
+    Wenn man die Maus bewegt, aktualisiert sich der Punkt, der angezeigt wird automatisch und wird neu eingezeichnet.
+    Bei den Nullstellen wird ausschließlich die x-Koordinate eingezeichnet, um Platz zu sparen.
+    Beim Einzeichnen der Tangente wird zudem die Gleichung der Tangente dargestellt.
+
+    \subsection{Anlegen einer Wertetabelle}
+    Der Taschenrechner ermöglicht es dem Anwender eine Wertetabelle zu einer Funktion in einem bestimmten Intervall anzulegen.
+    Dieses Intervall wird gewählt durch x-min und x-max, wodurch der kleinste und der größte x-Wert in der Wertetabelle definiert wird.
+    Für diese Werte dürfen ausschließlich ganze Zahlen genutzt werden.\par
+    Die Schrittweite kann auch definiert werden; hierbei dürfen alle positiven reelen Zahlen gewählt werden.
+
+    \newpage
+
+
+    \section{Programmiertechnische Details}
+
+    In der Main-Klasse dieses Taschenrechners wird ausschließlich eine Instanz eines Haupt-Fensters erzeugt und geöffnet.
+    Dieses Projekt ist ein Maven-Projekt und muss somit auch mit Maven kompiliert werden.
+    Dieses Projekt hat zwei Maven Abhängigkeiten:
+
+    \begin{enumerate}
+        \item Lombok
+        \item JetBrains-Annotations
+    \end{enumerate}
+
+    Mithilfe von Lombok können Konstruktoren mit einem Parameter für jede Variable, die eine Initialisierung benötigt,
+    erzeugt werden.
+    Zudem können Getter und Setter durch einfache Anmekungen (Annotations) im Code beim Prozess des Kompilierens mit
+    Lombok erzeugt werden.
+
+    \subsection{Erzeugung eines Fensters}
+    Um ein Fenster zu erzeugen, gibt es die abstrakte Klasse Gui.java, welche eine Instanz eines JFrame darstellt.
+    Jedes Fenster des Taschenrechners wird mittels eines Guis erzeugt, welches Titel und Größe übergeben bekommt.
+    Damit werden dann die grundlegenden Eigenschaften des Fensters festgelegt.
+
+    \subsubsection{Das Haupt-Fenster}
+    Das Haupt-Fenster stellt ein Menü mit allen Aktionen, die mit dem Taschenrechner möglich sind, zur Verfügung.
+    Dieses Gui wird auch als allererstes in der main-Methode der Anwendung instanziiert und geöffnet.
+    Ausgehend von diesem Fenster lassen sich dann die weiteren Fenster für den Taschenrechner,
+    das Zeichnen eine Funktion und das Anlegen einer Wertetabelle öffnen.
+
+    \subsubsection{Taschenrechner}
+    Das Taschenrechner-Fenster öffnet dem Anwender eine Oberfläche, auf der man einen Term eingeben und berechnen lassen kann.
+    Diesen Term kann man mithilfe der Knöpfe in dem Fenster eingeben; man kann diese Knöpfe aber auch mit den Tasten
+    auf der Tastatur drücken.
+
+    \subsubsection{Funktion zeichnen}
+    Bevor sich das Fenster mit der gezeichneten Funktion öffnet, muss der Nutzer in einem JOptionPane die Funktion
+    und deren Skalierung eingeben.
+    Mithilfe des Function-Handlers werden dann in kleinen Abständen alle Funktions-Werte ausgerechnet in der
+    entsprechenden Skalierung und in das Koordinatensystem eingezeichnet und miteinander verbunden.\par
+    Außerdem wird bei jedem Zeichnen geprüft, welche Werte auf true stehen und welche Punkte/Funktionen somit
+    eingezeichnet werden sollen.
+
+    \subsubsection{Wertetabelle}
+    Bevor sich das Fenster mit der Wertetabelle öffnet, muss der Nutzer in einem JOptionPane die Funktion, das Intervall,
+    in dem die Wertetabelle angelegt werden soll und die Schrittweite definieren.
+    Dann öffnet sich das Fenster mit der entsprechenden Wertetabelle.
+    Hierbei sind die Zeilen der Übersichtlichkeit halber abwechselnd grau und weiß.
+
+    \subsection{Enum-Konstanten}
+    In dem CalculatorActionType.java werden alle Aktionen gespeichert, die der Taschenrechner ausführen kann.
+    Diese Typen werden in dem Haupt-Fenster genutzt, um die einzelnen Aktionen aufzuführen.
+
+    \subsection{Handler}
+
+    \subsubsection{Function-Handler}
+    Mithilfe des Function-Handlers lassen sich in einem bestimmten Intervall in kleinen Abständen alle
+    Funktionswerte berechnen und zurückgeben.
+    Außerdem bietet der Function-Handler die utility-Methode eval(), mit der sich ein Term ausrechnen lässt.\par
+    Zusätzlich können mit dem Function-Handler alle Nullstellen, Extremstellen, Wendepunkte und Sattelpunkte
+    in einer Map zurückgegeben werden.
+    Auch die Funktion einer Tangente an einer gewissen Stelle $x$ kann zurückgegeben werden.
+
+    \subsubsection{File-Handler}
+    Mithilfe des File-Handlers kann dem Nutzer ein Menü geöffnet werden, worin eine betimmte Datei gewählt werden kann.
+    Diese Datei wird dann zurückgegeben.
+
+    \newpage
+
+
+    \section{Source-Code}
+    Der Source-Code ist grundsätzlich auf GitHub unter\par
+    https://github.com/GemueseHasser/GraphingCalculator\par
+    zu finden.
+
+    \vspace{1cm}
+
+    \subsection{Main-Klasse}
+
+    \lstinputlisting[language=Java, caption=GraphingCalculator.java]{\project/GraphingCalculator.java}
+
+    \newpage
+    \subsection{Grafische Oberflächen}
+
+    \subsubsection{Haupt-Fenster}
+    \lstinputlisting[language=Java, caption=MainGui.java]{\project/gui/MainGui.java}
+
+    \newpage
+
+    \subsubsection{Taschenrechner}
+    \lstinputlisting[language=Java, caption=CalculatorGui.java]{\project/gui/CalculatorGui.java}
+
+    \newpage
+
+    \subsubsection{Funktion zeichnen}
+    \lstinputlisting[language=Java, caption=FunctionGui.java]{\project/gui/FunctionGui.java}
+
+    \newpage
+
+    \subsubsection{Wertetabelle}
+    \lstinputlisting[language=Java, caption=ValueTableGui.java]{\project/gui/ValueTableGui.java}
+\end{document}
