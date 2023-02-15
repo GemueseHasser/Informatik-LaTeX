@@ -11,6 +11,7 @@
 \usepackage{hyperref}
 \usepackage{listings}
 \usepackage{color}
+\usepackage{unicode-math}
 
 % set document properties
 \setlength{\textwidth}{160mm}
@@ -43,7 +44,7 @@
     tabsize=4,
     captionpos=b,
     breaklines=true,
-    breakatwhitespace=false,
+    breakatwhitespace=falses,
     title=\lstname,
     keywordstyle=\color{blue},
     commentstyle=\color{dkgreen},
@@ -57,8 +58,7 @@
         {ä}{{\"a}}1
         {ö}{{\"o}}1
         {ü}{{\"u}}1
-        {ß}{{\ss}}1
-        {⟸}{{$\Leftarrow$}}1
+        {ß}{{\ss}}1,
 }
 
 % define calculator project path
@@ -260,4 +260,50 @@
 
     \subsubsection{Wertetabelle}
     \lstinputlisting[language=Java, caption=ValueTableGui.java]{\project/gui/ValueTableGui.java}
+
+    \newpage
+
+    \subsection{Enum-Konstanten}
+
+    \subsubsection{Calculator-Action-Type}
+    \lstinputlisting[language=Java, caption=CalculatorActionType.java]{\project/constant/CalculatorActionType.java}
+
+    \newpage
+
+    \subsection{Handler}
+
+    \subsubsection{Function-Handler}
+    \lstinputlisting[language=Java, caption=FunctionHandler.java]{\project/handler/FunctionHandler.java}
+
+    \newpage
+
+    \subsubsection{FileHandler}
+    \lstinputlisting[language=Java, caption=FileHandler.java]{\project/handler/FileHandler.java}
+
+    \newpage
+    
+    \subsection{Objekte}
+
+    \subsubsection{Gui-Superklasse}
+    \lstinputlisting[language=Java, caption=Gui.java]{\project/object/Gui.java}
+
+    \newpage
+    
+    \subsubsection{Zeichen-Objekt für das Zeichnen einer Funktion}
+    \lstinputlisting[language=Java, caption=DrawFunction.java]{\project/object/DrawFunction.java}
+
+    \newpage
+
+    \subsubsection{Taschenrechner-Feld}
+    \lstinputlisting[language=Java, caption=CalculatorField.java]{\project/object/CalculatorField.java}
+
+    \newpage
+
+    \subsubsection{Ableitung}
+    \lstinputlisting[language=Java, caption=Derivation.java]{\project/object/Derivation.java}
+
+    \newpage
+
+    \subsubsection{Punkt}
+    \lstinputlisting[language=Java, caption=Point.java]{\project/object/Point.java}
 \end{document}
