@@ -1,5 +1,4 @@
 %! Author = jonas
-%! Date = 14.02.23
 
 % preamble
 \documentclass[12pt,a4paper]{article}
@@ -11,6 +10,7 @@
 \usepackage{hyperref}
 \usepackage{listings}
 \usepackage{color}
+\usepackage{pdfpages}
 
 % set document properties
 \setlength{\textwidth}{160mm}
@@ -80,14 +80,17 @@
     \setcounter{tocdepth}{4}
     \pagestyle{plain}
 
-    \title{Grafikfähiger Taschenrechner \\[1ex] \large - Facharbeit Informatik -}
-    \date{}
-    \author{Jonas Lobe}
+    \title{\textbf{Grafikfähiger Taschenrechner} \\[5mm] \large - Facharbeit Informatik -}
+    \author{Jonas Lobe \\[18cm] Betreuender Lehrer: Klaus Wiele}
+    \date{22. Februar 2023}
 
     \maketitle
+    \thispagestyle{empty}
+    
     \newpage
 
     \tableofcontents
+    \thispagestyle{empty}
 
     \newpage
 
@@ -120,14 +123,15 @@
     Die Skalierung wird dann automatisch vorgenommen sowohl im negativen, als auch im positiven Bereich.
     Wählt man also als x-Skalierung den Wert 10 und als y-Skalierung den Wert 15,
     geht die Skalierung auf der x-Achse von -10 bis 10 und auf der y-Achse von -15 bis 15.
-    Für die Skalierung der Koordinaten-Achsen dürfen ausschließlich natürliche Zahlen verwendet werden.\par
+    Für die Skalierung der Koordinaten-Achsen dürfen ausschließlich natürliche Zahlen verwendet werden und die Skalierung
+    der x-Achse darf nicht kleiner als 5 sein.\par
 
     \newpage
 
     Wenn die Funktion gezeichnet wurde, stehen dem Anwender folgende Optionen unter fogenden Menüs zur Verfügung:
 
         {
-        \renewcommand{\labelenumi}{\bf \Alph{enumi}}
+        \renewcommand{\labelenumi}{\textbf{\Alph{enumi}}}
         \renewcommand{\labelenumii}{\arabic{enumii}}
 
         \begin{enumerate}
@@ -336,4 +340,7 @@
 
     \subsubsection{Punkt}
     \lstinputlisting[language=Java, caption=Point.java]{\project/object/Point.java}
+
+    % Anhang: Selbstständigkeitserklärung
+    \includepdf[fitpaper, offset=70 -50, templatesize={210mm}{297mm}, frame=false, scale=0.9]{SE.pdf}
 \end{document}
