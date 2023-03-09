@@ -1,0 +1,80 @@
+% preamble
+\documentclass[12pt,a4paper,fleqn]{article}
+
+% packages
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{soul}
+\usepackage{xcolor}
+
+% set document properties
+\setlength{\textwidth}{160mm}
+\setlength{\textheight}{260mm}
+\setlength{\evensidemargin}{27mm}
+\setlength{\oddsidemargin}{27mm}
+\setlength{\topmargin}{0mm}
+\setlength{\hoffset}{-1in}
+\setlength{\voffset}{-1in}
+\setlength{\headheight}{15pt}
+
+\definecolor{hlcolor}{RGB}{255 140 125}
+
+\newcounter{eqi}
+\newcommand{\eq}[1]{
+    \refstepcounter{eqi}
+
+    \medskip
+    (\theeqi)
+    \vspace{-9mm}
+
+    \begin{equation*}
+        \begin{aligned}
+            #1
+        \end{aligned}
+    \end{equation*}
+}
+
+% document
+\begin{document}
+    \setlength{\parindent}{0mm}
+    \setcounter{tocdepth}{4}
+    \pagestyle{empty}
+    \sethlcolor{hlcolor}
+
+    \texthl{\hphantom{A} Aufgabe 1 \hphantom{A}} \par
+
+    \eq{
+        \frac{d}{dx} \Big[\ln(\frac{1+x}{1-x})\Big] &= \frac{1}{\frac{1+x}{1-x}} \cdot \frac{d}{dx} \Big[\frac{1+x}{1-x}\Big] \\[1ex]
+        &= \frac{1-x}{1+x} \cdot \frac{1-x+1+x}{(1-x)^2} \\[1ex]
+        &= \frac{1}{1+x} \cdot \frac{2}{1-x} \\[1ex]
+        &= \frac{2}{(1+x)(1-x)} = \frac{2}{1-x^2}
+    }
+
+    \eq{
+        \frac{d}{dx} \Big[\sqrt[4]{1+\sin(x)}\Big] &= \frac{1}{4} \, (1+\sin^2(x))^{-\frac{3}{4}} \cdot \frac{d}{dx} \Big[1+\sin^2(x)\Big] \\[1ex]
+        &= \frac{1}{4} \, (1+\sin^2(x))^{-\frac{3}{4}} \cdot 2 \, \sin(x)\cos(x) \\[1ex]
+        &= \frac{1}{4} \cdot \frac{1}{\sqrt[4]{1+\sin^2(x)}^3} \cdot 2 \, \sin(x)\cos(x) \\[1ex]
+        &= \frac{\sin(x)\cos(x)}{2 \sqrt[4]{1+\sin^2(x)}}
+    }
+
+    \eq{
+        \frac{d}{dx} \Big[\frac{e^x-e^{-x}}{e^x+e^{-x}}\Big] &= \frac{(e^x+e^{-x})^2-(e^x-e^{-x})^2}{(e^x+e^{-x})^2} \\[1ex]
+        &= \Big(\frac{e^x+e^{-x}}{e^x+e^{-x}}\Big)^2 - \Big(\frac{e^x-e^{-x}}{e^x+e^{-x}}\Big)^2 \\[1ex]
+        &= 1 - \Big(\frac{e^x-e^{-x}}{e^x+e^{-x}}\Big)^2
+    }
+
+    \setcounter{eqi}{0}
+
+    \texthl{Aufgabe 2} \par
+
+    \eq{
+        \int_0^1 x^2e^{-x} \, dx &= \Big[-x^2e^{-x}\Big]_0^1 + 2 \, \int_0^1 xe^{-x} \, dx \\[1ex]
+        &= \Big[-x^2e^{-x}\Big]_0^1 + 2 \Big(\Big[-xe^{-x}\Big]_0^1 + \int_0^1 e^{-x} \, dx \Big) \\[1ex]
+        &= \Big[-x^2e^{-x}\Big]_0^1 + 2 \Big[-xe^{-x}\Big]_0^1 + 2 \Big[-e^{-x}\Big]_0^1 \\[1ex]
+        &= - \frac{1}{e} - \frac{2}{e} - \frac{2}{e} + 2 \\[1ex]
+        &= 2 - \frac{5}{e}
+    }
+
+\end{document}
