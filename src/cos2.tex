@@ -1,0 +1,51 @@
+% preamble
+\documentclass[12pt,a4paper]{article}
+
+% packages
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+
+% set document properties
+\setlength{\textwidth}{160mm}
+\setlength{\textheight}{260mm}
+\setlength{\evensidemargin}{27mm}
+\setlength{\oddsidemargin}{27mm}
+\setlength{\topmargin}{0mm}
+\setlength{\hoffset}{-1in}
+\setlength{\voffset}{-1in}
+\setlength{\headheight}{15pt}
+
+% document
+\begin{document}
+    \setlength{\parindent}{0mm}
+    \setcounter{tocdepth}{4}
+    \pagestyle{empty}
+
+    \underline{Gelöst werden soll das Integral der Funktion $f(x) = \cos^2(x)$:}
+
+    \vspace{1cm}
+    \begin{equation*}
+        \int f(x) \, dx = \int \cos^2(x) \, dx
+    \end{equation*}
+
+    Das Integral wird mittels partieller Integration umgeschrieben:
+    \begin{equation*}
+        \int \cos^2(x) \, dx = \sin(x)\cos(x) + \int \sin^2(x) \, dx
+    \end{equation*}
+
+    Der trigonometrische Pythagoras wird angewendet, um das Ergebnis umzuschreiben, welches durch die partielle Integration entstanden ist:
+    \begin{equation*}
+        \sin(x)\cos(x) + \int \sin^2(x) \, dx = \sin(x)\cos(x) - \int \cos^2(x) \, dx + \int 1 \, dx
+    \end{equation*}
+
+    Also gilt:
+    \begin{alignat}{4}
+        & \int \cos^2(x) \, dx &&= \sin(x)\cos(x) - \int \cos^2(x) \, dx + \int 1 \, dx && \qquad\Big / + \int \cos^2(x) \, dx \nonumber \\
+        \Leftrightarrow\quad & 2 \int \cos^2(x) \, dx &&= \sin(x)\cos(x) + \int 1 \, dx && \qquad\Big / \div 2 \nonumber \\
+        \Leftrightarrow\quad & \int \cos^2(x) \, dx &&= \frac{\sin(x)\cos(x) + x}{2}
+    \end{alignat}
+
+
+\end{document}
