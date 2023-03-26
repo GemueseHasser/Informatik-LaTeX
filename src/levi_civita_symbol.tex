@@ -1,0 +1,79 @@
+% preamble
+\documentclass[12pt,a4paper]{article}
+
+% packages
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{xcolor}
+
+% set document properties
+\setlength{\textwidth}{160mm}
+\setlength{\textheight}{260mm}
+\setlength{\evensidemargin}{27mm}
+\setlength{\oddsidemargin}{27mm}
+\setlength{\topmargin}{0mm}
+\setlength{\hoffset}{-1in}
+\setlength{\voffset}{-1in}
+\setlength{\headheight}{15pt}
+
+\newcommand{\eps}{\ensuremath{\boldsymbol{\varepsilon}}}
+\newcommand{\cp}[2]{\ensuremath{\vec{#1} \times \vec{#2}}}
+\newcommand{\vek}[3]{\ensuremath{\left(\begin{array}{c} #1 \\ #2 \\ #3\end{array}\right)}}
+\newcommand{\rbox}[1]{
+    \par\vspace{5mm}
+    \fcolorbox{red}{white}{\parbox{\linewidth}{
+        \vspace{1mm}\par
+        \hspace{1mm} {\parbox{0.97\linewidth}{#1}}
+        \par\vspace{1mm}
+    }}
+    \par\vspace{5mm}
+}
+
+% document
+\begin{document}
+    \setlength{\parindent}{0mm}
+    \setcounter{tocdepth}{4}
+    \pagestyle{empty}
+
+    \begin{center}
+        \underline{\Large Beweis für $\cp{a}{b} = -\cp{b}{a}$ mithilfe des Levi-Civita-Symbols}
+    \end{center}
+    \bigskip
+
+    \begin{equation*}
+        \begin{aligned}
+            (\cp{a}{b})_1 &= \eps_{1jk} a_j b_k &&= \eps_{123} a_2 b_3 + \eps_{132} a_3 b_2 &&= a_2 b_3 - a_3 b_2 \\[1ex]
+            (\cp{a}{b})_2 &= \eps_{2jk} a_j b_k &&= \eps_{213} a_1 b_3 + \eps_{231} a_3 b_1 &&= a_3 b_1 - a_1 b_3 \\[1ex]
+            (\cp{a}{b})_3 &= \eps_{3jk} a_j b_k &&= \eps_{312} a_1 b_2 + \eps_{321} a_2 b_1 &&= a_1 b_2 - a_2 b_1
+        \end{aligned}
+    \end{equation*}
+
+    \bigskip
+
+    \rbox{
+        \begin{equation*}
+            \text{Also gilt:\quad} \cp{a}{b} = \vek{a_2 b_3 - a_3 b_2}{a_3 b_1 - a_1 b_3}{a_1 b_2 - a_2 b_1}
+        \end{equation*}
+    }
+
+    \begin{equation*}
+        \begin{aligned}
+        (-\cp{b}{a})_1 &= -\eps_{1jk} b_j a_k &&= -\eps_{123} b_2 a_3 + -\eps_{132} b_3 a_2 &&= -b_2 a_3 + b_3 a_2 \\[1ex]
+        (-\cp{b}{a})_2 &= -\eps_{2jk} b_j a_k &&= -\eps_{213} b_1 a_3 + -\eps_{231} b_3 a_1 &&= b_1 a_3 - b_3 a_1 \\[1ex]
+        (-\cp{b}{a})_3 &= -\eps_{3jk} b_j a_k &&= -\eps_{312} b_1 a_2 + -\eps_{321} b_2 a_1 &&= -b_1 a_2 + b_2 a_1
+        \end{aligned}
+    \end{equation*}
+
+    \rbox{
+        \begin{equation*}
+            \text{Also gilt:\quad} -\cp{b}{a} = \vek{a_2 b_3 - a_3 b_2}{a_3 b_1 - a_1 b_3}{a_1 b_2 - a_2 b_1}
+        \end{equation*}
+        \bigskip
+        \begin{equation*}
+            \text{Und somit gilt auch:\quad} \cp{a}{b} = -\cp{b}{a}
+        \end{equation*}
+    }
+
+\end{document}
